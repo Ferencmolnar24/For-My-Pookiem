@@ -232,3 +232,104 @@ p {
   .polaroid { padding: 7px 7px 10px; }
   .polaroid figcaption { font-size: 1.05rem; }
 }
+
+/* ---------- the No button as a little creature (phones) ---------- */
+#no-btn .label { position: relative; z-index: 1; }
+
+#no-btn.creature {
+  --px: 0px;
+  --py: 0px;
+  --ink: #5a2a3a;
+  overflow: visible;
+}
+#no-btn.creature.walking { animation: bob 0.28s ease-in-out infinite alternate; }
+@keyframes bob { from { translate: 0 0; } to { translate: 0 -4px; } }
+
+#no-btn .eyes {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+#no-btn .eye {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: blink 4s infinite;
+}
+#no-btn .eye:last-child { animation-delay: 0.02s; }
+#no-btn .pupil {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2b1620;
+  transform: translate(var(--px), var(--py));
+  transition: transform 0.25s ease;
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+#no-btn .legs {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 28%;
+}
+#no-btn .leg {
+  position: relative;
+  width: 4px;
+  height: 20px;
+  border-radius: 2px;
+  background: var(--ink);
+  transform-origin: top center;
+}
+#no-btn .leg::after { /* little feet */
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: -4px;
+  width: 12px;
+  height: 6px;
+  border-radius: 6px;
+  background: var(--ink);
+}
+
+#no-btn .arm {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+#no-btn .arm-l { left: -12px; transform-origin: right center; transform: rotate(20deg); }
+#no-btn .arm-r { right: -12px; transform-origin: left center; transform: rotate(-20deg); }
+
+/* legs and arms pop out */
+#no-btn.sprouting .leg  { animation: sprout 0.4s cubic-bezier(.3,1.6,.5,1) both; }
+#no-btn.sprouting .eyes { animation: pop 0.4s cubic-bezier(.3,1.6,.5,1) both; }
+#no-btn.sprouting .arm  { animation: pop 0.4s cubic-bezier(.3,1.6,.5,1) both; }
+@keyframes sprout { from { height: 0; } to { height: 20px; } }
+@keyframes pop { from { scale: 0; } to { scale: 1; } }
+
+/* walking: legs step, arms flail */
+#no-btn.walking .leg:first-child { animation: step 0.28s ease-in-out infinite alternate; }
+#no-btn.walking .leg:last-child  { animation: step 0.28s ease-in-out infinite alternate-reverse; }
+@keyframes step { from { transform: rotate(28deg); } to { transform: rotate(-28deg); } }
+#no-btn.walking .arm-l { animation: flailL 0.28s ease-in-out infinite alternate; }
+#no-btn.walking .arm-r { animation: flailR 0.28s ease-in-out infinite alternate; }
+@keyframes flailL { from { transform: rotate(-35deg); } to { transform: rotate(35deg); } }
+@keyframes flailR { from { transform: rotate(35deg); } to { transform: rotate(-35deg); } }
