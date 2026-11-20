@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>For My Pookie 💌</title>
+  <meta name="description" content="A little something for you." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💗</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <main>
+    <!-- PAGE 1 -->
+    <section class="page active" id="page-1">
+      <div class="card">
+        <div class="emoji">🥺</div>
+        <h1>I miss you</h1>
+        <p>I know I messed up, and I'm really sorry.<br />I made something for you&hellip;</p>
+        <button class="btn btn-primary" data-next="page-2">Continue 💌</button>
+      </div>
+    </section>
+
+    <!-- PAGE 2 — put your photos in the /photos folder and edit the captions -->
+    <section class="page" id="page-2">
+      <div class="card card-wide">
+        <h2>Remember these?</h2>
+        <p>Some of my favourite moments are the ones with you.</p>
+
+        <div class="gallery">
+          <figure class="polaroid">
+            <img src="photos/1.jpg" alt="Us" loading="lazy" />
+            <figcaption>Our first date 💕</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img src="photos/2.jpg" alt="Us" loading="lazy" />
+            <figcaption>That trip we took ✈️</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img src="photos/3.jpg" alt="Us" loading="lazy" />
+            <figcaption>You, being cute</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img src="photos/4.jpg" alt="Us" loading="lazy" />
+            <figcaption>My favourite day</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img src="photos/5.jpg" alt="Us" loading="lazy" />
+            <figcaption>Laughing at nothing</figcaption>
+          </figure>
+          <figure class="polaroid">
+            <img src="photos/6.jpg" alt="Us" loading="lazy" />
+            <figcaption>More of these, please</figcaption>
+          </figure>
+        </div>
+
+        <button class="btn btn-primary" data-next="page-3">Continue 💞</button>
+      </div>
+    </section>
+
+    <!-- PAGE 3 -->
+    <section class="page" id="page-3">
+      <div class="card">
+        <div class="emoji beat">💖</div>
+        <h1>I love you so much</h1>
+        <p class="question">Do you love me too?</p>
+        <div class="choices">
+          <button class="btn btn-primary" id="yes-btn">Yes 💕</button>
+          <button class="btn btn-ghost" id="no-btn">No</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 4 -->
+    <section class="page" id="page-4">
+      <div class="card">
+        <div class="emoji">🥰</div>
+        <h1>I knew it!</h1>
+        <p>I'm so, so happy.<br />See you tomorrow! 💗</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

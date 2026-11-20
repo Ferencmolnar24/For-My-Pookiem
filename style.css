@@ -1,0 +1,234 @@
+:root {
+  --bg-1: #ffe4ec;
+  --bg-2: #ffd1e0;
+  --card: rgba(255, 255, 255, 0.82);
+  --text: #5a2a3a;
+  --muted: #8d5a6b;
+  --accent: #ff4d7d;
+  --accent-dark: #e6336a;
+  --shadow: 0 20px 50px rgba(214, 51, 108, 0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Quicksand", system-ui, sans-serif;
+  color: var(--text);
+  background: linear-gradient(160deg, var(--bg-1), var(--bg-2));
+  background-attachment: fixed;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ---------- pages ---------- */
+.page {
+  display: none;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 32px 16px;
+  align-items: center;
+  justify-content: center;
+}
+.page.active {
+  display: flex;
+  animation: pageIn 0.7s ease both;
+}
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  background: var(--card);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 28px;
+  padding: 40px 28px;
+  box-shadow: var(--shadow);
+}
+.card-wide { max-width: 860px; }
+
+h1, h2 {
+  font-family: "Dancing Script", cursive;
+  color: var(--accent);
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+h1 { font-size: clamp(2.6rem, 9vw, 4rem); }
+h2 { font-size: clamp(2.2rem, 7vw, 3.2rem); }
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+.question {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.emoji { font-size: 3.5rem; margin-bottom: 8px; }
+.beat { animation: beat 1.2s ease-in-out infinite; }
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.18); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  touch-action: manipulation;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(255, 77, 125, 0.35);
+}
+.btn-primary:hover { background: var(--accent-dark); }
+.btn-primary:active { transform: scale(0.96); }
+.btn-ghost {
+  background: #fff;
+  color: var(--muted);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.choices {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 64px;
+}
+#yes-btn { transition: transform 0.25s ease, background 0.2s ease; }
+
+/* the runaway No button, once it starts dodging */
+#no-btn.runaway {
+  position: fixed;
+  z-index: 10;
+  transition: left 0.25s ease, top 0.25s ease;
+  white-space: nowrap;
+}
+
+/* ---------- gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  margin: 8px 0 32px;
+}
+.polaroid {
+  margin: 0;
+  background: #fff;
+  padding: 10px 10px 14px;
+  border-radius: 6px;
+  box-shadow: 0 10px 24px rgba(90, 42, 58, 0.15);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.3s ease;
+  opacity: 0;
+  animation: dropIn 0.6s ease forwards;
+}
+.polaroid:nth-child(odd)  { --tilt: -3deg; }
+.polaroid:nth-child(even) { --tilt: 2.5deg; }
+.polaroid:nth-child(3n)   { --tilt: -1.5deg; }
+.polaroid:hover { transform: rotate(0deg) scale(1.05); z-index: 2; }
+.polaroid:nth-child(1) { animation-delay: 0.1s; }
+.polaroid:nth-child(2) { animation-delay: 0.2s; }
+.polaroid:nth-child(3) { animation-delay: 0.3s; }
+.polaroid:nth-child(4) { animation-delay: 0.4s; }
+.polaroid:nth-child(5) { animation-delay: 0.5s; }
+.polaroid:nth-child(6) { animation-delay: 0.6s; }
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-16px) rotate(var(--tilt)); }
+  to   { opacity: 1; transform: rotate(var(--tilt)); }
+}
+
+.polaroid img,
+.polaroid .placeholder {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #ffd6e2, #ffb3c9);
+}
+.polaroid .placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+.polaroid figcaption {
+  font-family: "Dancing Script", cursive;
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-top: 10px;
+}
+
+/* ---------- floating hearts background ---------- */
+.hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.hearts span {
+  position: absolute;
+  bottom: -40px;
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.7; }
+  100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+}
+
+/* confetti burst on the last page */
+.burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 20;
+  font-size: 1.6rem;
+  animation: burst 1.6s ease-out forwards;
+}
+@keyframes burst {
+  from { transform: translate(0, 0) scale(0.6); opacity: 1; }
+  to   { transform: translate(var(--dx), var(--dy)) scale(1.2) rotate(var(--rot)); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .hearts { display: none; }
+}
+
+@media (max-width: 420px) {
+  .card { padding: 32px 20px; }
+  .polaroid { padding: 7px 7px 10px; }
+  .polaroid figcaption { font-size: 1.05rem; }
+}
