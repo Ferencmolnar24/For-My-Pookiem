@@ -3,7 +3,7 @@
 A tiny four-page site: *I miss you* → our memories → *Do you love me too?* (the **No** button runs away) → *I knew it!*
 
 ## Make it yours
-- **Photos:** put them in `photos/` as `1.jpg` … `6.jpg`, and edit the captions in `index.html`.
+- **Photos:** put them in `photos/` as `1.jpg` … `10.jpg`, and edit the captions in `index.html`.
 - **Text:** every message lives in `index.html`. The pleading messages on the No button are in `script.js` (`noTexts`).
 
 ## Put it online (GitHub Pages)

@@ -45,12 +45,15 @@ const noTexts = [
   "Are you sure, pookie?",
   "Pookiecham, think again 🥺",
   "Kicsim, pleeease",
-  "Cutiepatootiem, wrong button",
-  "Babycham, don't break my heart 💔",
+  "Cutiepatootiem, that's the wrong button",
   "Malikacham, I'm begging you 🙏",
-  "My lovechik would never 😢",
+  "Pookie, the Yes button misses you",
+  "Nope, try again",
+  "Error 404: \"No\" not found",
+  "This button is broken, use the pink one",
   "You can't catch me 😜",
-  "Just press yes, my love 💕",
+  "Wrong answer, cutiepatootiem",
+  "Your finger slipped, right?",
 ];
 let attempts = 0;
 let yesScale = 1;
